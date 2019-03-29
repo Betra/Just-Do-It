@@ -1,22 +1,18 @@
+import { Todo } from "../interfaces";
 /*
  *     REDUCERS: Todos
  */
-interface todo {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-}
 
-interface actionTodo extends todo {
+interface TodoAction extends Todo {
   type: string;
 }
 
 const initialState = [];
 
-export const todos = (state: todo[] = initialState, action: actionTodo) => {
+export const todos = (state: Todo[] = initialState, action: TodoAction) => {
   switch (action.type) {
     case "ADD_TODO":
-      return [...state, todo(undefined, action)];
+      return [...state, todo(state[0], action)];
 
     case "TOGGLE_TODO":
       return state.map(task => todo(task, action));
@@ -28,7 +24,7 @@ export const todos = (state: todo[] = initialState, action: actionTodo) => {
 /*
  *     REDUCERS: Single Todo
  */
-const todo = (state, action: actionTodo) => {
+const todo = (state: Todo, action: TodoAction) => {
   switch (action.type) {
     case "ADD_TODO":
       return {

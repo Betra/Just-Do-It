@@ -1,12 +1,17 @@
+import { Form } from "../interfaces";
 /*
- *     REDUCERS: Todos
+ *     REDUCERS: Form
  */
 
-interface inputForm {
-  type?: string;
-  text: string;
+interface FormAction extends Form {
+  type: string;
 }
-export const form = (state: inputForm = { text: "" }, action: inputForm) => {
+
+const initialState: Form = {
+  text: ""
+};
+
+export const form = (state: Form = initialState, action: FormAction) => {
   switch (action.type) {
     case "UPDATE_INPUT_TEXT":
       return { ...state, text: action.text };
