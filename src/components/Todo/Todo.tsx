@@ -1,9 +1,12 @@
 import React from "react";
 
-import { AddTodoForm } from "../AddTodoForm";
-
-export const Todo = () => (
-  <div>
-    Hello <AddTodoForm />
-  </div>
+export const Todo = ({ onClick, isCompleted, text }) => (
+  <li
+    onClick={onClick}
+    style={{
+      textDecoration: isCompleted ? "line-through" : "none"
+    }}
+  >
+    {text}
+  </li>
 );
