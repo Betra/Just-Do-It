@@ -5,20 +5,25 @@ import styles from "./AddTodoInput.module.css";
 
 import { updateText } from "../../actions";
 
-interface inputTodo {
+interface InputProps {
   placeholder?: string;
+  ref: (r: any) => any;
 }
 
-export let AddTodoInput = ({ placeholder = "Insert todo" }: inputTodo) => {
-  return (
-    <div>
-      <input
-        type="text"
-        className={styles.inputText}
-        placeholder={placeholder}
-      />
-    </div>
-  );
-};
+type ref = React.RefObject<HTMLInputElement>;
+
+export let AddTodoInput = ({
+  placeholder = "Insert todo",
+  ref
+}: InputProps) => (
+  <div>
+    <input
+      type="text"
+      ref={ref}
+      className={styles.inputText}
+      placeholder={placeholder}
+    />
+  </div>
+);
 
 //Input = connect()(Input);

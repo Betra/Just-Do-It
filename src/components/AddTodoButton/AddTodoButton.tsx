@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./AddTodoButton.module.css";
 
-interface button {
+interface Button {
   value?: string;
-  onClick: any;
+  onClick: (event: React.MouseEvent) => any;
 }
 
-export const AddTodoButton = ({ value = "Submit", onClick }: button) => (
+export const AddTodoButton = ({ value = "Submit", onClick }: Button) => (
   <button className={styles.button} type="button" onClick={onClick}>
     {value}
   </button>
