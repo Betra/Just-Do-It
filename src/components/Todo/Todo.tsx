@@ -1,6 +1,16 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-export const Todo = ({ onClick, isCompleted, text }) => (
+interface Props {
+  onClick: (event: React.MouseEvent) => any;
+  isCompleted: boolean;
+  text: string;
+}
+
+export const Todo: FunctionComponent<Props> = ({
+  onClick,
+  isCompleted,
+  text
+}) => (
   <li
     onClick={onClick}
     style={{
