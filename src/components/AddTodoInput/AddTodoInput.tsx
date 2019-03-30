@@ -1,29 +1,33 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { connect } from "react-redux";
+
+// Option 1 via store
+import { Dispatch } from "redux";
+import { updateText } from "../../actions";
+
+// Option 2 via
+// via Refs shrug
 
 import styles from "./AddTodoInput.module.css";
 
-import { updateText } from "../../actions";
-
-interface InputProps {
+interface Props {
   placeholder?: string;
-  ref: (r: any) => any;
+  ref?: (r: any) => any;
+  dispatch: Dispatch;
 }
 
-type ref = React.RefObject<HTMLInputElement>;
-
-export let AddTodoInput = ({
+export const AddTodoInputContainer: FunctionComponent<Props> = ({
   placeholder = "Insert todo",
-  ref
-}: InputProps) => (
-  <div>
-    <input
-      type="text"
-      ref={ref}
-      className={styles.inputText}
-      placeholder={placeholder}
-    />
-  </div>
+  ref,
+  dispatch
+}) => (
+  <input
+    type="text"
+    ref={ref}
+    className={styles.inputText}
+    placeholder={placeholder}
+    onChange={event => dispatch(updateText(event.target.value))}
+  />
 );
 
-//Input = connect()(Input);
+export const AddTodoInput = connect()(AddTodoInputContainer);
