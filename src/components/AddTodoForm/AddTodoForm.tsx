@@ -1,16 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, FunctionComponent } from "react";
 import { connect } from "react-redux";
+
+import { Dispatch } from "redux";
 
 import { AddTodoInput } from "../AddTodoInput";
 import { AddTodoButton } from "../AddTodoButton";
 import { addTodo } from "../../actions";
 
 interface Props {
-  dispatch?: any;
+  dispatch: Dispatch;
 }
 
-export let AddTodoForm = ({ dispatch }: Props) => {
-  const ref = useRef(null);
+const AddTodoFormContainer: FunctionComponent<Props> = ({ dispatch }) => {
+  const ref = useRef<HTMLInputElement | null>(null);
 
   return (
     <div>
@@ -19,17 +21,13 @@ export let AddTodoForm = ({ dispatch }: Props) => {
 
       <AddTodoButton
         onClick={() => {
+          if (!ref.current) return;
           dispatch(addTodo(ref.current.value));
-          console.log(ref.current.value);
           ref.current.value = "";
         }}
       />
     </div>
   );
 };
-/*
-AddTodoForm = connect(
-  null,
-  null
-)(AddTodoForm);
-*/
+
+export const AddTodoForm = connect()(AddTodoFormContainer);
