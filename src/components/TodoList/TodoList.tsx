@@ -1,17 +1,23 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-import { Todo } from "../Todo";
-import { Todo as TodoInterface } from "../../store/interfaces";
+import { Dispatch } from "redux";
+
+import { Todo as TodoComponent } from "../Todo";
+import { Todo } from "../../store/interfaces";
 
 interface Props {
-  todos: TodoInterface[];
-  onTodoClick: (id: number) => any;
+  todos: Todo[];
+  onTodoClick: (id: number) => Dispatch;
 }
 
-export const TodoList = ({ todos, onTodoClick }: Props) => (
+export const TodoList: FunctionComponent<Props> = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map(todo => {
-      <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />;
+      <TodoComponent
+        key={todo.id}
+        {...todo}
+        onClick={() => onTodoClick(todo.id)}
+      />;
     })}
   </ul>
 );
