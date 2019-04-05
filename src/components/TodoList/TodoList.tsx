@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import { Dispatch } from "redux";
 
 import { Todo } from "../Todo";
 import { Todo as TodoInterface } from "../../store/interfaces";
@@ -18,6 +17,7 @@ export const TodoList: FunctionComponent<Props> = ({ todos, onTodoClick }) => (
         <Todo
           key={todo.id}
           text={todo.text}
+          deadline={todo.deadline}
           isCompleted={todo.isCompleted}
           onClick={() => onTodoClick(todo.id)}
         />
