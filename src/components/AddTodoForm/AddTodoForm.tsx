@@ -1,32 +1,43 @@
 import React, { useRef, FunctionComponent } from "react";
 import { connect } from "react-redux";
-
 import { Dispatch } from "redux";
 
 import { AddTodoInput } from "../AddTodoInput";
 import { AddTodoButton } from "../AddTodoButton";
+import { AddTodoDeadline } from "../AddTodoDeadline";
+
 import { addTodo } from "../../actions";
+
+import { parseDate } from "../../utils";
+
+import styles from "./AddTodoForm.module.css";
 
 interface Props {
   dispatch: Dispatch;
 }
 
 const AddTodoFormContainer: FunctionComponent<Props> = ({ dispatch }) => {
-  const ref = useRef<HTMLInputElement | null>(null);
+  const refTask = useRef<HTMLInputElement | null>(null);
+  const refDate = useRef<HTMLInputElement | null>(null);
 
   return (
-    <div>
-      {/* <AddTodoInput ref={r => (ref.current = r)} /> Temporary solution; refs are hard in ts*/}
-      <input type="text" ref={r => (ref.current = r)} />
+    <form
+      className={styles.form}
+      onSubmit={event => {
+        event.preventDefault();
 
-      <AddTodoButton
-        onClick={() => {
-          if (!ref.current) return;
-          dispatch(addTodo(ref.current.value));
-          ref.current.value = "";
-        }}
-      />
-    </div>
+        dispatch(
+          addTodo(refTask.current!.value, parseDate(refDate.current!.value))
+        );
+
+        refTask.current!.value = "";
+        refDate.current!.value = "";
+      }}
+    >
+      <AddTodoInput ref={r => (refTask.current = r)} required />
+      <AddTodoDeadline ref={r => (refDate.current = r)} />
+      <AddTodoButton />
+    </form>
   );
 };
 
