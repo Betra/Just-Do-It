@@ -1,0 +1,7 @@
+.form {
+  padding: 1.25em 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
