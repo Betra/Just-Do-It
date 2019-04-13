@@ -1,2 +1,11 @@
 .todos {
+  padding: 0 0.7em;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.todos > ul {
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }

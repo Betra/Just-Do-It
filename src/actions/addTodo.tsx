@@ -6,11 +6,12 @@ interface TodoAction extends Todo {
   type: string;
 }
 
-export const addTodo = (text: string): TodoAction => {
+export const addTodo = (text: string, deadline: Date): TodoAction => {
   return {
     type: "ADD_TODO",
     id: nextId++,
     text: text,
-    isCompleted: false
+    isCompleted: false,
+    deadline: deadline
   };
 };

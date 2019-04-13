@@ -1,0 +1,12 @@
+.deadline {
+  font-size: 0.85em;
+  color: #817687;
+}
+
+.today {
+  color: #4a434d;
+}
+
+.outdated {
+  color: #c31818;
+}

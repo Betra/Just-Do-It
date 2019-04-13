@@ -4,14 +4,12 @@ import styles from "./AddTodoButton.module.css";
 
 interface Props {
   value?: string;
-  onClick: (event: React.MouseEvent) => any;
 }
 
 export const AddTodoButton: FunctionComponent<Props> = ({
-  value = "Submit",
-  onClick
+  value = "Submit"
 }) => (
-  <button className={styles.button} type="button" onClick={onClick}>
+  <button className={styles.button} type="submit">
     {value}
   </button>
 );

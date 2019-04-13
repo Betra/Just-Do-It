@@ -1,0 +1,8 @@
+.todoApp {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: baseline;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 3em;
+}

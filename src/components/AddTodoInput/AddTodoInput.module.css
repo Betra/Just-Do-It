@@ -1,2 +1,11 @@
 .inputText {
+  border: 0;
+  border-bottom: 2px #252525 solid;
+  padding: 0 2rem;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+input::placeholder {
+  color: #aeaeae;
 }

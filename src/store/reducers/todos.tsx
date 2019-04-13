@@ -30,7 +30,8 @@ const todo = (state: Todo, action: TodoAction) => {
       return {
         id: action.id,
         text: action.text,
-        isCompleted: action.isCompleted
+        isCompleted: action.isCompleted,
+        deadline: action.deadline
       };
     case "TOGGLE_TODO":
       if (state.id !== action.id) return state;

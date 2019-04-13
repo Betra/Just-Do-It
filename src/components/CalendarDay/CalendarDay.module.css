@@ -1,0 +1,10 @@
+.calendarDay {
+  color: #555454;
+  padding-bottom: 1em;
+}
+
+.active {
+  font-family: "FuturaMediumC";
+  font-weight: bold;
+  color: #000000;
+}
